@@ -1,8 +1,8 @@
 import './globals.css'
 import Headers from '@/components/headers'
 export const metadata = {
-  title: 'CryptoDashborad',
-  description: 'This is crypto dashborad app',
+  title: 'Crypto Trend',
+  description: 'This is crypto Trending dashborad app',
 }
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='w-full'>
         <Headers />
         {children}
       </body>

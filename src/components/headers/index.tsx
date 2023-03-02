@@ -10,7 +10,7 @@ const Headers = () => {
         <nav className="mx-auto flex items-center justify-between p-6 lg:px-8">
             <div className="lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">
-                    <span>Crypto DashBorad</span>
+                    <span>Crypto Trending App</span>
                 </a>
             </div>
             <ul className=" w-1/4 flex list-none">
