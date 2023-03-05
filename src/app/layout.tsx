@@ -1,5 +1,5 @@
 import './globals.css'
-import Headers from '@/components/headers'
+import Headers from './header'
 export const metadata = {
   title: 'Crypto Trend',
   description: 'This is crypto Trending dashborad app',

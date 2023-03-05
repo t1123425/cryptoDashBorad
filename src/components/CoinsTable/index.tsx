@@ -1,6 +1,7 @@
-import React from "react"
-import { CoinsDataType } from "@/DataTypes"
+import React, {useEffect,}from "react"
+import { GetCoinsMarket } from "@/app/coingecko_api"
 import Image from "next/image"
+import { CoinsDataType } from "typings"
 interface tableTh {
   name:string,
   width:string,
@@ -9,7 +10,26 @@ interface tableTh {
 interface Props{
   coinsList?:CoinsDataType[]
 }
-const CoinsTable = ({coinsList}:Props) => {
+
+const CoinsTable = async ({coinsList}:Props) => {
+    let coinsMarketList:CoinsDataType[] = [];
+    try{
+      const data:CoinsDataType[] = await GetCoinsMarket('usd',1,100);
+      coinsMarketList = data.map((e:any) => {
+        return {
+          name:e.name,
+          id:e.id,
+          image:e.image,
+          current_price:e.current_price,
+          market_cap_rank:e.market_cap_rank,
+          market_cap:e.market_cap,
+          price_change_percentage_24h:e.price_change_percentage_24h
+        }
+      })
+    }catch(err){
+      console.log(err);
+    }
+    // coinsMarketList = loadMarketCoins();
     const thList:tableTh[] = [
       {
         name:'#',
@@ -43,7 +63,6 @@ const CoinsTable = ({coinsList}:Props) => {
       }else{
         return null;
       }
-      
     }
     return (
         <table className="table-auto text-center w-full border-collapse border border-slate-500">
@@ -62,8 +81,8 @@ const CoinsTable = ({coinsList}:Props) => {
             </thead>
             <tbody>
               {
-                 coinsList?.map((e,i)=> 
-                 <tr key={i} className="trlist">
+                 coinsMarketList?.map((e,i)=> 
+                 <tr key={i} className="trlist"> 
                     <td>
                       {
                         e.market_cap_rank
@@ -108,4 +127,4 @@ const CoinsTable = ({coinsList}:Props) => {
     )
 }
 
-export default CoinsTable;
+export default  CoinsTable;

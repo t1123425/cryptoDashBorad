@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 const Headers = () => {
   const dummydata:string[] = [
     'page1',
@@ -6,12 +7,12 @@ const Headers = () => {
      'page3'
   ]
   return (
-    <header className="bg-white">
+    <header className="bg-white drop-shadow-md">
         <nav className="mx-auto flex items-center justify-between p-6 lg:px-8">
             <div className="lg:flex-1">
-                <a href="#" className="-m-1.5 p-1.5">
+                <Link href="/" className="-m-1.5 p-1.5">
                     <span>Crypto Trending App</span>
-                </a>
+                </Link>
             </div>
             <ul className=" w-1/4 flex list-none">
                 {
